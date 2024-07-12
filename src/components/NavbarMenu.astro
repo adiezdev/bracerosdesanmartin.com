@@ -1,0 +1,49 @@
+---
+import { Image } from 'astro:assets';
+import escudo from '../../public/escudo-dorado.png';
+import Icon from '../components/Icon.astro'
+import '../styles/hamburguer.css'
+type menuItem = {
+    id: Number,
+    label: String,
+    path?: string,
+    signal?: string
+}
+const menuItems: Array<menuItem> = [
+    {
+        id: 0,
+        label: "Inicio",
+        path: "/"
+    },
+    {
+        id: 1,
+        label: "Historia",
+        path: "/historia"
+    },
+    {
+        id: 2,
+        label: "Procesiones",
+        path: "/historia"
+    },
+    {
+        id: 3,
+        label: "Hazte bracero",
+        path: "/historia"
+    },
+]
+---
+<nav class="nav w-full flex flex-row whitespace-nowrap items-center justify-around py-3 fixed ease-out duration-300 z-50">
+    <Image src={escudo} class="h-12 w-12 opacity-0" alt="Una descripción de mi imagen." />
+    <Icon classes="xs:block md:block l:hidden lg:hidden xl:hidden" icon='menu'/>
+    <div class="xs:hidden md:hidden l:block lg:block xl:block">
+        {
+            menuItems.map((data) =>{
+                return <a class="p-3 mx-2 text-2xl sm:text-xl text-white" href={data.path ? data.path : data.signal!}>{data.label}</a>
+            })
+        }
+    </div>
+</nav>
+<script>
+    const hamburguer:HTMLHeadElement = document.querySelector('.hamburguer')!;
+    hamburguer.onclick =function(){hamburguer.classList.toggle('active')}
+</script>

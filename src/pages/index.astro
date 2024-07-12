@@ -1,0 +1,87 @@
+---
+import { Image } from 'astro:assets';
+import { procesionList } from '../data/procesionList'
+import escudo from '../../public/escudo-dorado.png';
+import ProcesionesCard from '../components/ProcesionesCard.astro'
+import NavbarMenu from '../components/NavbarMenu.astro'
+import '../styles.css'
+---
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro</title>
+	</head>
+	<body>
+		<div class="flex flex-col items-center min-h-[100dvh]">
+			<NavbarMenu />
+			<header class="portada bg-[url('../../sm-portada-x695.png')] bg-center bg-cover h-[600px] w-full ease-out duration-300 bac">
+				<div class="escudo flex flex-row gap-1 items-center absolute top-1/3 left-2/4 -translate-x-2/4 -translate-y-3/4">
+					<Image src={escudo} class="grayscale w-36 h-40" alt="Una descripción de mi imagen." />
+					<p class="text-3xl text-white">Agrupación Parroquial <br/>Braceros de San Martín de Tours</p>
+				</div>
+			</header>
+			<main class="flex-1">
+				<section class="w-full py-20">
+					<div class="flex flex-col items-center justify-center text-center">
+						<h2 class="text-3xl font-bold tracking-tighter sm:text-5xl">Procesiones</h2>
+						<p class="sans max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-base/relaxed">
+							Conoce las procesiones organizadas por nuestra asociación
+						</p>
+					</div>
+					<div class="flex flex-col items-center justify-center w-full sm:flex-row mt-6 md:flex-row gap-10 p-3 l:flex-wrap xl:gap-36 ">
+						{
+							procesionList.map((data)=>{
+								return <ProcesionesCard title={data.title} frase={data.frase}/>
+							})
+						}
+					</div>
+				</section>
+			</main>
+			<section class="flex flex-col items-center w-full h-full py-16 bg-[#c00000] bg-center bg-cover bg-no-repeat">
+				<div class="text-center">
+					<h2 class="text-white text-3xl font-bold tracking-tighter sm:text-5xl">Historia</h2>
+					<p class="sans max-w-[900px] text-white md:text-xl/relaxed m-4 lg:text-base/relaxed xl:text-base/relaxed">
+						La asociación Braceros de San Martín fue fundada en 1996 por un grupo de devotos católicos de la parroquia omonima de León, con el objetivo de organizar procesiones y eventos religiosos en la comunidad.
+					</p>
+				</div>
+				<br/>
+				<div class="flex gap-16 p-5 xs:flex-col sm:flex-col md:flex-row lg:flex-row xl:flex-row">
+					<div class="flex flex-col gap-8 text-white p-2">
+						<div>
+							<h1>Barrio</h1>
+							<p class="sans">Arraigada a la parroquia y barrio más conocidos de la Ciudad.</p>
+						</div>
+						<div>
+							<h1>Tradicción</h1>
+							<p class="sans">Arraigada a la parroquia y barrio más conocidos de la Ciudad.</p>
+						</div>
+						<div>
+							<h1>Fe</h1>
+							<p class="sans">Arraigada a la parroquia y barrio más conocidos de la Ciudad.</p>
+						</div>
+					</div>
+						<Image class="rounded-md shadow-xl w-96 object-cover" width={600} height={350} alt="Almohadilla" src="/sm-almohadilla2.png">
+				</div>
+				<button class="cursor-pointer rounded-lg p-3 bg-[#EFB810]">Saber más</button>
+			</section>
+		
+		</div>
+	
+	</body>
+	<script src="../scripts/scrollMenuAnimtation.ts" />
+	<script>
+		let i = 0;
+		const portada:HTMLHeadElement = document.querySelector('.portada')!;
+		const imgs = [ '../../ex-portada-x695.png','../../sm-portada-x695.png',];
+		function toggle() {
+		setTimeout(() => {
+			portada.style.backgroundImage = `url('${imgs[i]}')`;
+			i = (i + 1) % imgs.length;
+		}, 100);
+		}
+		setInterval(toggle, 3500)
+	</script>
+</html>

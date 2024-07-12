@@ -1,0 +1,13 @@
+
+svg.hamburguer line{
+    transition: all ease-in-out 0.3s;
+}
+svg.active line:first-child{
+    transform: rotate(45deg) translate(10px, -10px);
+}
+svg.active line:nth-child(3){
+    transform: rotate(-45deg) translate(-23px, -3px);
+}
+svg.active line:nth-child(2){
+    transform: translate(2000px);
+}
