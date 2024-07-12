@@ -1,12 +1,12 @@
 @font-face {
   font-family: 'Judson';
-  src: url('/fonts/Judson-Regular.woff2') format('woff2'),
-       url('/fonts/Judson-Regular.woff') format('woff');
+  src: url('/bracerosdesanmartin.com/fonts/Judson-Regular.woff2') format('woff2'),
+       url('/bracerosdesanmartin.com/fonts/Judson-Regular.woff') format('woff');
 }
 @font-face {
     font-family: 'Judson';
-    src: url('/fonts/Judson-Bold.woff2') format('woff2'),
-       url('/fonts/Judson-Regular.woff') format('woff');
+    src: url('/bracerosdesanmartin.com/fonts/Judson-Bold.woff2') format('woff2'),
+       url('/bracerosdesanmartin.com/fonts/Judson-Regular.woff') format('woff');
     font-weight: bold;
 }
 body {
