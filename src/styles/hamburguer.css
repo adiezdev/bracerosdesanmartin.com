@@ -11,3 +11,48 @@ svg.active line:nth-child(3){
 svg.active line:nth-child(2){
     transform: translate(2000px);
 }
+.menu-mobile{
+    position: fixed;
+    top: 0;
+    right: -250px;
+    width: 250px;
+    height: 100vh;
+    background-color: #c00000;
+    transition: right 0.3s;
+    text-align: right;
+}
+.menu-mobile > div {
+    position: relative;
+    top: 80px;
+    display: flex;
+    flex-direction: column;    
+}
+.menu-mobile > div > a::after{
+    content: "\25CF";
+    margin-left: 5px;
+    color: #EFB810;
+}
+@media (min-width: 800px) {
+    .menu-mobile{
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        top: inherit;
+        right: inherit;
+        width: inherit;
+        height: inherit;
+        background-color: transparent;
+        justify-content: flex-end;
+        transition: inherit;
+    }
+    .menu-mobile > div {
+        position: relative;
+        top: inherit;
+        display: flex;
+        flex-direction: row;   
+        justify-content: flex-end;
+    }
+    .menu-mobile > div > a::after{
+        content: none;
+    }
+}

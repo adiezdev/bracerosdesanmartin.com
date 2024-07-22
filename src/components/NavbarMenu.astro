@@ -8,6 +8,7 @@ type menuItem = {
     label: String,
     path?: string,
     signal?: string
+    subItems?: Array<string>
 }
 const menuItems: Array<menuItem> = [
     {
@@ -23,7 +24,8 @@ const menuItems: Array<menuItem> = [
     {
         id: 2,
         label: "Procesiones",
-        path: "/historia"
+        path: "/historia",
+        subItems: ["San Martín", "Exaltación de la Cruz"]
     },
     {
         id: 3,
@@ -32,18 +34,18 @@ const menuItems: Array<menuItem> = [
     },
 ]
 ---
-<nav class="nav w-full flex flex-row whitespace-nowrap items-center justify-around py-3 fixed ease-out duration-300 z-50">
+<nav class="nav w-full flex flex-row whitespace-nowrap items-center py-3 fixed ease-out duration-300 z-50 pl-16 pr-5 justify-between 
+            l:justify-around l:px-16 lg:justify-around lg:px-16">
     <Image src={escudo} class="h-12 w-12 opacity-0" alt="Una descripción de mi imagen." />
-    <Icon classes="xs:block md:block l:hidden lg:hidden xl:hidden" icon='menu'/>
-    <div class="xs:hidden md:hidden l:block lg:block xl:block">
-        {
-            menuItems.map((data) =>{
-                return <a class="p-3 mx-2 text-2xl sm:text-xl text-white" href={data.path ? data.path : data.signal!}>{data.label}</a>
-            })
-        }
+    <Icon classes="z-10 xs:block md:block l:hidden lg:hidden xl:hidden" icon='menu'/>
+    <div class="menu-mobile ">
+        <div>
+            {
+                menuItems.map((data) =>{
+                    return <a class="p-3 mx-2 text-2xl sm:text-xl text-white click hover:bg-[#7b1b1b]" href={data.path ? data.path : data.signal!}>{data.label}</a>
+                })
+            }
+        </div>
     </div>
 </nav>
-<script>
-    const hamburguer:HTMLHeadElement = document.querySelector('.hamburguer')!;
-    hamburguer.onclick =function(){hamburguer.classList.toggle('active')}
-</script>
+<script src="../scripts/menuResponsive.ts" />
